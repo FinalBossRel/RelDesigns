@@ -25,18 +25,18 @@ public class ControllerArtGallery {
 	@Autowired private ItemRepository items;
 	@Autowired private CategoryRepository category;
 	
-	@GetMapping("/food")
-	public String food(Model model){
+	@GetMapping("/artGallery")
+	public String artGallery(Model model){
 		List <Item> aux = new ArrayList<Item>(items.findAll());
 		List<Category> cate = new ArrayList<Category>(category.findAll());
 		model.addAttribute("category",cate);
 		model.addAttribute("items", aux);
 		
-		return "food";
+		return "artGallery";
 	}
 	
-	@GetMapping("/food/{name}")
-	public String food(Model model,  @PathVariable String name){
+	@GetMapping("/artGallery/{name}")
+	public String artGallery(Model model,  @PathVariable String name){
 		Client c = client.findByName(name);
 
 		List<Category> cate = new ArrayList<Category>(category.findAll());
@@ -45,7 +45,7 @@ public class ControllerArtGallery {
 		model.addAttribute("category",cate);
 		model.addAttribute("client",c);
 		
-		return "food";
+		return "artGallery";
 	}
 	
 	@GetMapping("/category/{nameCategory}")
