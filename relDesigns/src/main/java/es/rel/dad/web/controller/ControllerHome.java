@@ -29,16 +29,16 @@ public class ControllerHome {
 	@PostConstruct
 	 public void init(){
 		
-		Item item1 = new Item("Sopa", 14, 5);
-		Item item2 = new Item("Saltenia", 6, 3);
-		Item item3 = new Item("Patatas", 7, 5);
-		Item item4 = new Item("Carne", 8, 2);
-		Item item5 = new Item("Agua", 8, 2);
+		Item item1 = new Item("La escuela de Atenas", 14, 5);
+		Item item2 = new Item("La Bella Jardinera", 6, 3);
+		Item item3 = new Item("El grito", 7, 5);
+		Item item4 = new Item("Ansiedad", 8, 2);
+		Item item5 = new Item("La Gioconda", 8, 2);
 		
 		List<Item> Things = new ArrayList<Item>();
-
 		Things.add(item1);
 		Things.add(item2);
+		
 		List<Item> Things2 = new ArrayList<Item>();
 		Things2.add(item3);
 		Things2.add(item4);
@@ -49,9 +49,9 @@ public class ControllerHome {
 		Client C1 = new Client("Rel","Flores Angulo",625983775,"jcarlosfa.rel@gmail.com","C/Las Flores","1234");
 		Client C2 = new Client("Alberto","Del Pozo",123456789,"usuario@gmail.com","C/Calle Del Mar","1111");
 		
-		Category cx1 = new Category("Comida Latina",Things); 
-		Category cx2 = new Category("Comida Boliviana",Things2); 
-		Category cx3 = new Category("Comida Argentina",Things3);
+		Category cx1 = new Category("Rafael",Things); 
+		Category cx2 = new Category("Edvard Munch",Things2); 
+		Category cx3 = new Category("Leonardo da Vinci",Things3);
 		 
 		
 		items.save(item1);
