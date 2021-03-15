@@ -14,7 +14,7 @@ Se desarrollará una aplicación web destinada a la venta de cuadros en una gale
 - Items: Cada producto llevará asociado un identificador único, y contendrá datos específicos que lo describan junto al número de stock. 
 - Client: Cada ususario tendrá su propio identificador que será unico y otros datos como su dirección y datos personales. El usuario podrá realizar de 0 a N Orders.
 - Orders: esta entidad tendrá asociada un número de items y un usuario. Tambien contendrá el coste final total.
-- Category: esta entidad llevará asosciado un identificador único y contendrá de 0 a N items que se recojan en ella.
+- Author: esta entidad llevará asosciado un identificador único y contendrá de 0 a N items que se recojan en ella.
 ## 3 - :lock: Descripción Servicio Público <a name="ServicioPublico">
 - Los usuarios podrán navegar por las distintatas plantillas html y buscar cuadros.
 ## 4 - :lock: Descripción Servicio Privado <a name="ServicioPrivado">
