@@ -27,7 +27,29 @@ Se desarrollará una aplicación web destinada a la venta de cuadros en una gale
 - GII + GIC 135
 - ##### Github: [FinalBossRel](https://github.com/FinalBossRel)
 ## 6 - :book: Capturas De Pantalla <a name="Capturas">
-  
+### Home.html
+  ![home](https://user-images.githubusercontent.com/63256402/111153803-ada62b80-8592-11eb-9ed2-d8ede9d6e978.png)
+  Página principal donde se exponen algunos cuadros y se muestra un pequeño resumen.
+### Contact.html
+  ![contact](https://user-images.githubusercontent.com/63256402/111153896-cf071780-8592-11eb-8e38-8013229fe057.png)
+  Página donde el usuario puede comunicarse con los administradores de la web(en progreso).
+### ArtGallery.html  
+  ![artgallery](https://user-images.githubusercontent.com/63256402/111154018-f958d500-8592-11eb-8e99-1db1e929be6c.png)
+  Página en la que se exponen los autores y sus obras.
+### Shoppingcart.html
+  ![cart](https://user-images.githubusercontent.com/63256402/111154248-4d63b980-8593-11eb-9d0a-04614a82a5ef.png)
+  Pagina que muestra el carrito de compra con los productos añadidos por el cliente.
+  ![cartWithThings](https://user-images.githubusercontent.com/63256402/111154313-64a2a700-8593-11eb-95d1-4e6ba69849c4.png)
+  Una vez que el cliente se registre podrá añadir productos al carrito.
+### Singin.html
+![singIn](https://user-images.githubusercontent.com/63256402/111154371-72582c80-8593-11eb-9326-3f5ed419737a.png)
+Página que permite acceder al usuario con sus credecianles a su cuenta personal.
+ ### Createaccount.html
+  ![createAccount](https://user-images.githubusercontent.com/63256402/111154595-adf2f680-8593-11eb-8c4b-61cfb4bd97b8.png)
+  Página para nuevos usuarios en la que se piden datos del cliente.
+### DatosClient.html
+  ![dataClient](https://user-images.githubusercontent.com/63256402/111154696-cd8a1f00-8593-11eb-9ad2-d3de76678644.png)
+  Página que enseña los datos del cliente
 ## 7 - :pencil: Diagramas <a name="Diagramas">
 ## 7.1 Diagrama De Navegación
 ![Diagrama de navegacion](https://user-images.githubusercontent.com/63256402/111145735-e0e3bd00-8588-11eb-894c-75543a4a6ffe.png)
