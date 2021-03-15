@@ -10,11 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import es.rel.dad.web.entity.Category;
+import es.rel.dad.web.entity.Author;
 import es.rel.dad.web.entity.Client;
 import es.rel.dad.web.entity.Item;
 import es.rel.dad.web.entity.Orders;
-import es.rel.dad.web.repository.CategoryRepository;
+import es.rel.dad.web.repository.AuthorRepository;
 import es.rel.dad.web.repository.ClientRepository;
 import es.rel.dad.web.repository.ItemRepository;
 import es.rel.dad.web.repository.OrdersRepository;
@@ -27,13 +27,13 @@ public class ControllerShoppingCart {
 	@Autowired private ClientRepository client;
 	@Autowired private OrdersRepository orders;
 	@Autowired private ItemRepository items;
-	@Autowired private CategoryRepository category;
+	@Autowired private AuthorRepository author;
 
-	@GetMapping("/cart/{name}/{nameItem}/{nameCategory}")
-	public String carrito(Model model, @PathVariable String name,  @PathVariable String nameItem, @PathVariable String nameCategory) {
+	@GetMapping("/cart/{name}/{nameItem}/{nameAuthor}")
+	public String carrito(Model model, @PathVariable String name,  @PathVariable String nameItem, @PathVariable String nameAuthor) {
 				
 		Client c = client.findByName(name);
-		Category cate = category.findByNameCategory(nameCategory);
+		Author cate = author.findByNameAuthor(nameAuthor);
 		List <Item> aux = new ArrayList<Item>(cate.getItems());
 		Item itemAux = items.findByNameItem(nameItem);
 		
@@ -51,8 +51,8 @@ public class ControllerShoppingCart {
 	
 		model.addAttribute("items", aux);		
 		model.addAttribute("client",c);
-		model.addAttribute("category",cate);
-		return "categoryItems";
+		model.addAttribute("author",cate);
+		return "authorItems";
 	}
 	
 	@GetMapping("/shoppingCart")

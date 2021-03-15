@@ -10,30 +10,30 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Category {
+public class Author{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String nameCategory;
+	private String nameAuthor;
 	
 	@OneToMany
 	private List <Item> items;
 	
-	public Category(){}
-	public Category(String nameCategory, List<Item> items) {
+	public Author(){}
+	public Author(String nameCategory, List<Item> items) {
 		super();
-		this.nameCategory = nameCategory;
+		this.nameAuthor = nameCategory;
 		this.items = items;
 	}
 
 	public String getName() {
-		return nameCategory;
+		return nameAuthor;
 	}
 
 	public void setName(String nameCategory) {
-		this.nameCategory = nameCategory;
+		this.nameAuthor = nameCategory;
 	}
 
 	public List<Item> getItems() {

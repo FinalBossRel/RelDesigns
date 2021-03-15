@@ -9,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import es.rel.dad.web.entity.Category;
+import es.rel.dad.web.entity.Author;
 import es.rel.dad.web.entity.Client;
 import es.rel.dad.web.entity.Item;
-import es.rel.dad.web.repository.CategoryRepository;
+import es.rel.dad.web.repository.AuthorRepository;
 import es.rel.dad.web.repository.ClientRepository;
 import es.rel.dad.web.repository.ItemRepository;
 
@@ -23,13 +23,13 @@ public class ControllerArtGallery {
 
 	@Autowired private ClientRepository client;
 	@Autowired private ItemRepository items;
-	@Autowired private CategoryRepository category;
+	@Autowired private AuthorRepository author;
 	
 	@GetMapping("/artGallery")
 	public String artGallery(Model model){
 		List <Item> aux = new ArrayList<Item>(items.findAll());
-		List<Category> cate = new ArrayList<Category>(category.findAll());
-		model.addAttribute("category",cate);
+		List<Author> cate = new ArrayList<Author>(author.findAll());
+		model.addAttribute("author",cate);
 		model.addAttribute("items", aux);
 		
 		return "artGallery";
@@ -39,36 +39,35 @@ public class ControllerArtGallery {
 	public String artGallery(Model model,  @PathVariable String name){
 		Client c = client.findByName(name);
 
-		List<Category> cate = new ArrayList<Category>(category.findAll());
+		List<Author> cate = new ArrayList<Author>(author.findAll());
 		
-		
-		model.addAttribute("category",cate);
+		model.addAttribute("author",cate);
 		model.addAttribute("client",c);
 		
 		return "artGallery";
 	}
 	
-	@GetMapping("/category/{nameCategory}")
-	public String aniadir(Model model, @PathVariable String nameCategory) {
+	@GetMapping("/author/{nameAuthor}")
+	public String aniadir(Model model, @PathVariable String nameAuthor) {
 		
-		Category cate = category.findByNameCategory(nameCategory);
+		Author cate = author.findByNameAuthor(nameAuthor);
 		List <Item> aux = new ArrayList<Item>(cate.getItems());		
 		
 		model.addAttribute("items", aux);		
-		return "categoryItems";
+		return "authorItems";
 	}
 	
-	@GetMapping("/category/{name}/{nameCategory}")
-	public String aniadir(Model model, @PathVariable String name, @PathVariable String nameCategory) {
+	@GetMapping("/author/{name}/{nameAuthor}")
+	public String aniadir(Model model, @PathVariable String name, @PathVariable String nameAuthor) {
 		
 		Client c = client.findByName(name);
-		Category cate = category.findByNameCategory(nameCategory);
+		Author cate = author.findByNameAuthor(nameAuthor);
 		List <Item> aux = new ArrayList<Item>(cate.getItems());		
 		
-		model.addAttribute("category", cate);	
+		model.addAttribute("author", cate);	
 		model.addAttribute("items", aux);		
 		model.addAttribute("client",c);
-		return "categoryItems";
+		return "authorItems";
 		
 	}
 

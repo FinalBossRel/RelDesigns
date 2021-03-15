@@ -29,25 +29,25 @@
 	    </ul>
 	  {{/client}}	
 
-  		{{#category}}
+  		{{#author}}
 		   <dl>
 		   
 			  <div class="box">
 			  <br>
-			  <dd>{{nameCategory}}</dd>
+			  <dd>{{nameAuthor}}</dd>
 			  <br><br>
 			  
 			  {{#client}}
-			  <dd class="boton"><a href="/category/{{client.name}}/{{nameCategory}}">See</a></dd>
+			  <dd class="boton"><a href="/author/{{client.name}}/{{nameAuthor}}">See</a></dd>
 			  {{/client}}
 			  
 			  {{^client}}
-			  <dd class="boton"><a href="/category/{{nameCategory}}">See</a></dd>
+			  <dd class="boton"><a href="/author/{{nameAuthor}}">See</a></dd>
 			  {{/client}}
 			  </div>
 			   
 			</dl>
-		{{/category}}
+		{{/author}}
 
   			  
   			  
