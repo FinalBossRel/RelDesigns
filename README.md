@@ -52,14 +52,14 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
   Página que enseña los datos del cliente
 ## 7 - :pencil: Diagramas <a name="Diagramas">
 ## 7.1 Diagrama De Navegación
-![Diagrama de navegacion](https://user-images.githubusercontent.com/63256402/111145735-e0e3bd00-8588-11eb-894c-75543a4a6ffe.png)
-Diagrama que muestra la navegación entre las distintas pantallas de la página web.
+  ![Diagrama de navegacion](https://user-images.githubusercontent.com/63256402/111155399-b4ce3900-8594-11eb-9b67-b85410215d90.jpeg)
+  Diagrama que muestra la navegación entre las distintas pantallas de la página web.
 ## 7.2 Diagrama de clases UML
-![DiagramaUML](https://user-images.githubusercontent.com/63256402/110469780-5b6c9280-80da-11eb-85f7-5de9e6d8328b.jpeg)
-Diagrama UML en el que se muestra la composición y agregación de las clases.
+  ![uml](https://user-images.githubusercontent.com/63256402/111155385-ad0e9480-8594-11eb-95e8-1c5bc60e4101.jpeg)
+  Diagrama UML en el que se muestra la composición y agregación de las clases.
 ## 7.3 Diagrama E/R
-![Diagrama entidad_relacion](https://user-images.githubusercontent.com/63256402/110317622-b0da6e00-800c-11eb-9a80-ae741759024f.jpeg)
-Diagrama en el que se muestra la realación estre las entidades de la pagina web.
+  ![ER](https://user-images.githubusercontent.com/63256402/111155357-a2ec9600-8594-11eb-80ba-5b55af13e005.jpeg)
+  Diagrama en el que se muestra la realación estre las entidades de la pagina web.
 
 
 
