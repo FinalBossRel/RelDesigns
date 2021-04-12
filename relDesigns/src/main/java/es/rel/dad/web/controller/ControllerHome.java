@@ -83,15 +83,13 @@ public class ControllerHome {
 		return "home";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-	return "login";
+	
+	@GetMapping("/logout")
+	public String logout() {
+		return "home";
 	}
 	
-	@GetMapping("/loginerror")
-	public String loginerror() {
-	return "loginerror";
-	}
+
 	
 
 	

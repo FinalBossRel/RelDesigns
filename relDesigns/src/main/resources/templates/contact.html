@@ -48,7 +48,9 @@
 	    <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br /><br>
 	  </div>
 	    
-	   <input class="boton" id="submit_button" type="submit" value="Send email" />      	    
+	   <input class="boton" id="submit_button" type="submit" value="Send email" />
+	   <input type="hidden" name="_csrf" value="{{token}}">
+	         	    
 </form>
 			  
 </body>

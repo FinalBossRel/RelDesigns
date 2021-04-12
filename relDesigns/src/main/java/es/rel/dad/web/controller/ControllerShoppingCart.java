@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class ControllerShoppingCart {
 	@Autowired private AuthorRepository author;
 
 	@GetMapping("/cart/{name}/{nameItem}/{nameAuthor}")
-	public String carrito(Model model, @PathVariable String name,  @PathVariable String nameItem, @PathVariable String nameAuthor) {
+	public String carrito(Model model, @PathVariable String name,  @PathVariable String nameItem, @PathVariable String nameAuthor, HttpServletRequest request) {
 				
 		Client c = client.findByName(name);
 		Author cate = author.findByNameAuthor(nameAuthor);
@@ -48,7 +50,9 @@ public class ControllerShoppingCart {
 			items.save(itemAux);
 		}
 
-	
+		model.addAttribute("user", request.isUserInRole("USER"));
+		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
 		model.addAttribute("items", aux);		
 		model.addAttribute("client",c);
 		model.addAttribute("author",cate);
@@ -61,14 +65,18 @@ public class ControllerShoppingCart {
 	}
 	
 	@GetMapping("/shoppingCart/{name}")
-	public String shoppingCart(Model model, @PathVariable String name) {
+	public String shoppingCart(Model model, @PathVariable String name, HttpServletRequest request) {
+	
 		Client c = client.findByName(name);
+		model.addAttribute("user", request.isUserInRole("USER"));
+		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
 
 	@GetMapping("/pay/{name}")
-	public String pay(Model model, @PathVariable String name) {
+	public String pay(Model model, @PathVariable String name, HttpServletRequest request) {
 		
 		Client c = client.findByName(name);
 		if(c.getCarrito().size() > 0) {
@@ -89,12 +97,15 @@ public class ControllerShoppingCart {
 			client.save(c);
 
 		}
+		model.addAttribute("user", request.isUserInRole("USER"));
+		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
 	
 	@GetMapping("/delete/{name}/{food}")
-	public String delete(Model model, @PathVariable String name, @PathVariable String food) {
+	public String delete(Model model, @PathVariable String name, @PathVariable String food, HttpServletRequest request) {
 		Client c = client.findByName(name);
 		
 		Iterator<Item> iter = c.getItems().iterator();
@@ -109,6 +120,9 @@ public class ControllerShoppingCart {
 
 		// Cambios
 		client.save(c);
+		model.addAttribute("user", request.isUserInRole("USER"));
+		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
