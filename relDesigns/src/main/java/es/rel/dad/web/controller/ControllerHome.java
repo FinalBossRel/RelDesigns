@@ -2,10 +2,13 @@ package es.rel.dad.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,28 +72,38 @@ public class ControllerHome {
 	 }
 	//Controller principal HOME
 	
-	@GetMapping("/")
-	public String home(){
-		return "home";
-	}
+
 	
 	@GetMapping("/home2/{name}")
 	public String home2(Model model,  @PathVariable String name){
-		Client c = client.findByName(name);
+		Optional<Client> c = client.findByName(name);
 		if(c != null)
 			model.addAttribute("client", c);
 		model.addAttribute("client",c);
 		return "home";
 	}
 	
+	@GetMapping("/")
+	public String index() {
+	return "home";
+	}
+	@GetMapping("/login")
+	public String login(Model model, HttpServletRequest request) {
+		model.addAttribute("error", false);
+		return "login";
 	
-	@GetMapping("/logout")
-	public String logout() {
+	}
+	@GetMapping("/loginerror")
+	public String loginerror(Model model) {
+		model.addAttribute("error", true);
+	return "loginerror";
+	}
+	@GetMapping("/home")
+	public String home() {
 		return "home";
 	}
-	
-
-	
-
-	
+	@GetMapping("/logout")
+	public String logout(Model model) {
+	return "logout";
+	}
 }

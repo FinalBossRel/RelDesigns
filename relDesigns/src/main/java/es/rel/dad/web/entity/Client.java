@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Client {
@@ -22,7 +26,13 @@ public class Client {
 	private int telephone;
 	private String mail;
 	private String address;
+	
+	
+	@JsonIgnore
 	private String password;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
 	
 	private ArrayList <String> carrito;
 	
@@ -34,6 +44,13 @@ public class Client {
 	
 	public Client() {}
 	
+	public Client(String name, String password, List<String> roles) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.roles = roles;
+		
+	}
 	public Client(String name, String surname, int telephone, String mail, String address, String password
 			) {
 		super();
@@ -49,7 +66,16 @@ public class Client {
 	}
 	
 
+	
 
+
+	public List<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+	
 	public List<Item> getItems() {
 		return items;
 	}
@@ -134,6 +160,15 @@ public class Client {
 		this.id = id;
 	}
 	
+	@Override
+	public int hashCode() {
+		int hash = 1;
+        hash = hash * 17 + (int)this.id;
+        hash = hash * 31 + name.hashCode();
+        return hash;
+		
+	}
+		
 	
 	
 }

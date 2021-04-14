@@ -21,7 +21,7 @@
 	  
 	  {{^client}}
 	    <ul class="a">
-	  	<li class="b"><a class="active" href="/">Home</a></li>
+	  	<li class="b"><a class="active" href="/home">Home</a></li>
 	    <li class="b"><a href="/contact">Contact</a></li>
 	    <li class="b"><a href="/artGallery">Art Gallery</a></li>
 	    <li class="b"><a href="/shoppingCart">Shopping Cart</a></li>
@@ -30,7 +30,8 @@
 	  {{/client}}
 	  		  
 <br><br>
-<form id="contact" action="#" method="POST">
+
+<form id="form-contact" action="/contact/message" method="post">
 
 	  <div>
 	    <label for="name"><p>Your name:</p></label><br />
@@ -47,9 +48,6 @@
 	    <label for="message"> <p>Your message:</p> </label><br />
 	    <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br /><br>
 	  </div>
-	    
-	   <input class="boton" id="submit_button" type="submit" value="Send email" />
-	   <input type="hidden" name="_csrf" value="{{token}}">
 	         	    
 </form>
 			  

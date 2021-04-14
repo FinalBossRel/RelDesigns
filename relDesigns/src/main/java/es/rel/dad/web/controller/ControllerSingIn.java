@@ -1,5 +1,7 @@
 package es.rel.dad.web.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,36 +31,21 @@ public class ControllerSingIn {
 		return "home";
 	}
 	
-	@PostMapping("/login")
-	public String login(Model model, @RequestParam String name, @RequestParam String password,  HttpServletRequest request) {
-		Client c = client.findByNameAndPassword(name,password);
-		if(c !=null) {
-			model.addAttribute("fallo", false);
-			model.addAttribute("user", request.isUserInRole("USER"));
-			model.addAttribute("admin", request.isUserInRole("ADMIN"));
-
-			model.addAttribute("id",c.getId());
-			model.addAttribute("client", c);
-		}
-		return "home";
-	}
 	
-	@PostMapping("/loginerror")
-	public String loginerror(Model model) {
-		model.addAttribute("fallo", true);
-		return "loginerror";
-	}
-	
-	
+	  @PostMapping("/loginBBDD") 
+	  public String login(Model model, @RequestParam String name, @RequestParam String password) { 
+		  Client c = client.findByNameAndPassword(name,password); if(c !=null) {
+		  model.addAttribute("fallo", false);
+		  model.addAttribute("id",c.getId()); model.addAttribute("client", c); } 
+		  return "home"; 
+	  }
+	 
 	
 	@GetMapping("/datosClient/{name}")
-	public String datosClient(Model model, @PathVariable String name,  HttpServletRequest request) {
-		Client c = client.findByName(name);
+	public String datosClient(Model model, @PathVariable String name) {
+		Optional<Client> c = client.findByName(name);
 		if(c != null)
 			model.addAttribute("client", c);
-		
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
 		model.addAttribute("client",c);
 		return "datosClient";

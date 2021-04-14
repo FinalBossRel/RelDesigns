@@ -2,6 +2,7 @@ package es.rel.dad.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,15 +39,13 @@ public class ControllerArtGallery {
 	}
 	
 	@GetMapping("/artGallery/{name}")
-	public String artGallery(Model model,  @PathVariable String name, HttpServletRequest request){
-		Client c = client.findByName(name);
+	public String artGallery(Model model,  @PathVariable String name){
+		Optional<Client> c = client.findByName(name);
 		
 		List<Author> cate = new ArrayList<Author>(author.findAll());
 		
 		model.addAttribute("author",cate);
 		model.addAttribute("client",c);
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		return "artGallery";
 	}
 	
@@ -61,13 +60,11 @@ public class ControllerArtGallery {
 	}
 	
 	@GetMapping("/author/{name}/{nameAuthor}")
-	public String aniadir(Model model, HttpServletRequest request ,@PathVariable String name, @PathVariable String nameAuthor) {
+	public String aniadir(Model model,@PathVariable String name, @PathVariable String nameAuthor) {
 		
-		Client c = client.findByName(name);
+		Optional<Client> c = client.findByName(name);
 		Author cate = author.findByNameAuthor(nameAuthor);
 		List <Item> aux = new ArrayList<Item>(cate.getItems());
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		model.addAttribute("author", cate);	
 		model.addAttribute("items", aux);		
 		model.addAttribute("client",c);

@@ -3,6 +3,7 @@ package es.rel.dad.web.controller;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,26 +33,23 @@ public class ControllerShoppingCart {
 	@Autowired private AuthorRepository author;
 
 	@GetMapping("/cart/{name}/{nameItem}/{nameAuthor}")
-	public String carrito(Model model, @PathVariable String name,  @PathVariable String nameItem, @PathVariable String nameAuthor, HttpServletRequest request) {
+	public String carrito(Model model, @PathVariable String name,  @PathVariable String nameItem, @PathVariable String nameAuthor) {
 				
-		Client c = client.findByName(name);
+		Optional<Client> c = client.findByName(name);
 		Author cate = author.findByNameAuthor(nameAuthor);
 		List <Item> aux = new ArrayList<Item>(cate.getItems());
 		Item itemAux = items.findByNameItem(nameItem);
 		
-		if(c.getCarrito().contains(nameItem) == false) {
-			c.getItems().add(itemAux);
+		if(c.get().getCarrito().contains(nameItem) == false) {
+			c.get().getItems().add(itemAux);
 		}
 		
 		if(itemAux.getStock() > 0) {
 			itemAux.setStock( itemAux.getStock()-1);
-			c.getCarrito().add(nameItem);
-			client.save(c);
+			c.get().getCarrito().add(nameItem);
+			client.save(c.get());
 			items.save(itemAux);
 		}
-
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
 		model.addAttribute("items", aux);		
 		model.addAttribute("client",c);
@@ -65,63 +63,59 @@ public class ControllerShoppingCart {
 	}
 	
 	@GetMapping("/shoppingCart/{name}")
-	public String shoppingCart(Model model, @PathVariable String name, HttpServletRequest request) {
+	public String shoppingCart(Model model, @PathVariable String name) {
 	
-		Client c = client.findByName(name);
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+		Optional<Client> c = client.findByName(name);
+
 
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
 
 	@GetMapping("/pay/{name}")
-	public String pay(Model model, @PathVariable String name, HttpServletRequest request) {
+	public String pay(Model model, @PathVariable String name) {
 		
-		Client c = client.findByName(name);
-		if(c.getCarrito().size() > 0) {
+		Optional<Client> c = client.findByName(name);
+		if(c.get().getCarrito().size() > 0) {
 			
-			for(Item xx : c.getItems()) {
+			for(Item xx : c.get().getItems()) {
 				System.out.println("Name : "+xx.getName());
 			}
 			
-			List aux = new ArrayList<Item>(c.getItems());
+			List aux = new ArrayList<Item>(c.get().getItems());
 			Orders orden1 = new Orders(aux);	
 			orders.save(orden1);
 			
-			c.setCarrito(new ArrayList<String>());
-			c.setItems(new ArrayList<Item>());
+			c.get().setCarrito(new ArrayList<String>());
+			c.get().setItems(new ArrayList<Item>());
 			
-			c.getOrders().add(orden1);
+			c.get().getOrders().add(orden1);
 			
-			client.save(c);
+			client.save(c.get());
 
 		}
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
 	
 	@GetMapping("/delete/{name}/{food}")
-	public String delete(Model model, @PathVariable String name, @PathVariable String food, HttpServletRequest request) {
-		Client c = client.findByName(name);
+	public String delete(Model model, @PathVariable String name, @PathVariable String food) {
+		Optional<Client> c = client.findByName(name);
 		
-		Iterator<Item> iter = c.getItems().iterator();
+		Iterator<Item> iter = c.get().getItems().iterator();
+				
 		
 		while(iter.hasNext()){
 			Item auxIt = iter.next();
 			if(auxIt.getName().equals(food)) {
 				iter.remove();
-				c.getCarrito().remove(food);
+				c.get().getCarrito().remove(food);
 			}
 		}
 
 		// Cambios
-		client.save(c);
-		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+		client.save(c.get());
 
 		model.addAttribute("client",c);
 		return "shoppingCart";
