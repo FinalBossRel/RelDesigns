@@ -63,17 +63,18 @@ public class ControllerShoppingCart {
 	}
 	
 	@GetMapping("/shoppingCart/{name}")
-	public String shoppingCart(Model model, @PathVariable String name) {
-	
+	public String shoppingCart(Model model, @PathVariable String name, HttpServletRequest request) {
+		
 		Optional<Client> c = client.findByName(name);
 
-
+		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
 
 	@GetMapping("/pay/{name}")
-	public String pay(Model model, @PathVariable String name) {
+	public String pay(Model model, @PathVariable String name, HttpServletRequest request) {
+		
 		
 		Optional<Client> c = client.findByName(name);
 		if(c.get().getCarrito().size() > 0) {
@@ -94,13 +95,13 @@ public class ControllerShoppingCart {
 			client.save(c.get());
 
 		}
-
+		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}
 	
 	@GetMapping("/delete/{name}/{food}")
-	public String delete(Model model, @PathVariable String name, @PathVariable String food) {
+	public String delete(Model model, @PathVariable String name, @PathVariable String food,  HttpServletRequest request) {
 		Optional<Client> c = client.findByName(name);
 		
 		Iterator<Item> iter = c.get().getItems().iterator();
@@ -116,7 +117,7 @@ public class ControllerShoppingCart {
 
 		// Cambios
 		client.save(c.get());
-
+		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c);
 		return "shoppingCart";
 	}

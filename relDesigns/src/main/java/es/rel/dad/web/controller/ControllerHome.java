@@ -75,7 +75,8 @@ public class ControllerHome {
 
 	
 	@GetMapping("/home2/{name}")
-	public String home2(Model model,  @PathVariable String name){
+	public String home2(Model model,  @PathVariable String name, HttpServletRequest request){
+		model.addAttribute("user", request.isUserInRole("USER"));
 		Optional<Client> c = client.findByName(name);
 		if(c != null)
 			model.addAttribute("client", c);

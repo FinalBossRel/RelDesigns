@@ -39,9 +39,9 @@ public class ControllerArtGallery {
 	}
 	
 	@GetMapping("/artGallery/{name}")
-	public String artGallery(Model model,  @PathVariable String name){
+	public String artGallery(Model model,  @PathVariable String name,  HttpServletRequest request){
 		Optional<Client> c = client.findByName(name);
-		
+		model.addAttribute("user", request.isUserInRole("USER"));
 		List<Author> cate = new ArrayList<Author>(author.findAll());
 		
 		model.addAttribute("author",cate);
@@ -60,8 +60,8 @@ public class ControllerArtGallery {
 	}
 	
 	@GetMapping("/author/{name}/{nameAuthor}")
-	public String aniadir(Model model,@PathVariable String name, @PathVariable String nameAuthor) {
-		
+	public String aniadir(Model model,@PathVariable String name, @PathVariable String nameAuthor,  HttpServletRequest request) {
+		model.addAttribute("user", request.isUserInRole("USER"));
 		Optional<Client> c = client.findByName(name);
 		Author cate = author.findByNameAuthor(nameAuthor);
 		List <Item> aux = new ArrayList<Item>(cate.getItems());

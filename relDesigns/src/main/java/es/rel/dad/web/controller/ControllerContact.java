@@ -2,6 +2,8 @@ package es.rel.dad.web.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +26,8 @@ public class ControllerContact {
 	}
 	
 	@GetMapping("/contact/{name}")
-	public String contact(Model model, @PathVariable String name) {
+	public String contact(Model model, @PathVariable String name,  HttpServletRequest request) {
+		model.addAttribute("user", request.isUserInRole("USER"));
 		Optional<Client> c = client.findByName(name);
 		model.addAttribute("client",c);
 		return "contact";
