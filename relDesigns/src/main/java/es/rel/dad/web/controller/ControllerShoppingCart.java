@@ -37,6 +37,7 @@ public class ControllerShoppingCart {
 				
 		Optional<Client> c = client.findByName(name);
 		Author cate = author.findByNameAuthor(nameAuthor);
+		
 		List <Item> aux = new ArrayList<Item>(cate.getItems());
 		Item itemAux = items.findByNameItem(nameItem);
 		
