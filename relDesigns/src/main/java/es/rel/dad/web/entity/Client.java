@@ -34,6 +34,8 @@ public class Client {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 	
+	
+	
 	private ArrayList <String> carrito;
 	
 	@OneToMany(cascade=CascadeType.ALL)
@@ -52,7 +54,7 @@ public class Client {
 		
 	}
 	public Client(String name, String surname, int telephone, String mail, String address, String password
-			) {
+			,  String... roles) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -63,34 +65,15 @@ public class Client {
 		this.orders = new ArrayList<Orders>();
 		this.carrito = new ArrayList<String>();
 		this.items = new ArrayList<Item>();
-	}
-	
-
-	
-
-
-	public List<String> getRoles() {
-		return roles;
-	}
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-	
-	public List<Item> getItems() {
-		return items;
+		this.roles = List.of(roles);
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
-	
-
-	public ArrayList <String> getCarrito() {
-		return carrito;
+	public long getId() {
+		return id;
 	}
 
-	public void setCarrito(ArrayList <String> carrito) {
-		this.carrito = carrito;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -141,7 +124,30 @@ public class Client {
 		this.password = password;
 	}
 
-	
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+	public ArrayList<String> getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(ArrayList<String> carrito) {
+		this.carrito = carrito;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
 	public List<Orders> getOrders() {
 		return orders;
 	}
@@ -149,17 +155,9 @@ public class Client {
 	public void setOrders(List<Orders> orders) {
 		this.orders = orders;
 	}
-
-
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
 	
+
+	/*
 	@Override
 	public int hashCode() {
 		int hash = 1;
@@ -168,7 +166,7 @@ public class Client {
         return hash;
 		
 	}
-		
+		*/
 	
 	
 }

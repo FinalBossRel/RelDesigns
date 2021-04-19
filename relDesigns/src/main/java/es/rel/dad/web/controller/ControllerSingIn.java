@@ -34,7 +34,8 @@ public class ControllerSingIn {
 	
 	  @PostMapping("/loginBBDD") 
 	  public String login(Model model, @RequestParam String name, @RequestParam String password,  HttpServletRequest request) { 
-		  Client c = client.findByNameAndPassword(name,password); if(c !=null) {
+		  Client c = client.findByNameAndPassword(name,password); 
+		  if(c !=null) {
 		  model.addAttribute("fallo", false);
 		  model.addAttribute("id",c.getId()); model.addAttribute("client", c); } 
 		  return "home"; 
@@ -44,10 +45,10 @@ public class ControllerSingIn {
 	@GetMapping("/datosClient/{name}")
 	public String datosClient(Model model, @PathVariable String name,  HttpServletRequest request) {
 		Optional<Client> c = client.findByName(name);
-		if(c != null)
-			model.addAttribute("client", c);
+		if(c.get() != null)
+			model.addAttribute("client", c.get());
 
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		model.addAttribute("user", request.isUserInRole("USER"));
 
 		return "datosClient";

@@ -69,7 +69,7 @@ public class ControllerShoppingCart {
 		Optional<Client> c = client.findByName(name);
 
 		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		return "shoppingCart";
 	}
 
@@ -119,7 +119,7 @@ public class ControllerShoppingCart {
 		// Cambios
 		client.save(c.get());
 		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		return "shoppingCart";
 	}
 	

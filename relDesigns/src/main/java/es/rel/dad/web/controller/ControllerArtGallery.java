@@ -45,7 +45,7 @@ public class ControllerArtGallery {
 		List<Author> cate = new ArrayList<Author>(author.findAll());
 		
 		model.addAttribute("author",cate);
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		return "artGallery";
 	}
 	
@@ -67,7 +67,7 @@ public class ControllerArtGallery {
 		List <Item> aux = new ArrayList<Item>(cate.getItems());
 		model.addAttribute("author", cate);	
 		model.addAttribute("items", aux);		
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		return "authorItems";
 		
 	}

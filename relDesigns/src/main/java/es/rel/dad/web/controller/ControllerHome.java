@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,9 @@ public class ControllerHome {
 	@Autowired private ItemRepository items;
 	@Autowired private AuthorRepository author;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@PostConstruct
 	 public void init(){
 		
@@ -49,8 +53,8 @@ public class ControllerHome {
 		List<Item> Things3 = new ArrayList<Item>();
 		Things3.add(item5);
 
-		Client C1 = new Client("Rel","Flores Angulo",625983775,"jcarlosfa.rel@gmail.com","C/Las Flores","1234");
-		Client C2 = new Client("Alberto","Del Pozo",123456789,"usuario@gmail.com","C/Calle Del Mar","1111");
+		Client C1 = new Client("Rel","Flores Angulo",625983775,"jcarlosfa.rel@gmail.com","C/Las Flores",passwordEncoder.encode("1234"), "USER");
+		Client C2 = new Client("Alberto","Del Pozo",123456789,"usuario@gmail.com","C/Calle Del Mar",passwordEncoder.encode("1111"), "USER");
 		
 		Author cx1 = new Author("Rafael",Things); 
 		Author cx2 = new Author("Edvard Munch",Things2); 
@@ -70,6 +74,7 @@ public class ControllerHome {
 		client.save(C2);
 
 	 }
+	 
 	//Controller principal HOME
 	
 

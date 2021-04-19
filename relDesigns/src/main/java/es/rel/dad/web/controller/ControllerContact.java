@@ -28,8 +28,8 @@ public class ControllerContact {
 	@GetMapping("/contact/{name}")
 	public String contact(Model model, @PathVariable String name,  HttpServletRequest request) {
 		model.addAttribute("user", request.isUserInRole("USER"));
-		Optional<Client> c = client.findByName(name);
-		model.addAttribute("client",c);
+		Optional <Client> c = client.findByName(name);
+		model.addAttribute("client",c.get());
 		return "contact";
 	}
 	
