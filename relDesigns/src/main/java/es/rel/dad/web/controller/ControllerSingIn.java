@@ -31,7 +31,7 @@ public class ControllerSingIn {
 		return "home";
 	}
 	
-	
+/*	
 	  @PostMapping("/loginBBDD") 
 	  public String login(Model model, @RequestParam String name, @RequestParam String password,  HttpServletRequest request) { 
 		  Client c = client.findByNameAndPassword(name,password); 
@@ -41,7 +41,7 @@ public class ControllerSingIn {
 		  return "home"; 
 	  }
 	 
-	
+*/
 	@GetMapping("/datosClient/{name}")
 	public String datosClient(Model model, @PathVariable String name,  HttpServletRequest request) {
 		Optional<Client> c = client.findByName(name);
@@ -52,6 +52,10 @@ public class ControllerSingIn {
 		model.addAttribute("user", request.isUserInRole("USER"));
 
 		return "datosClient";
+	}
+	@GetMapping("/createaccount")
+	public String createaccount(Model model) {
+		return "createaccount";
 	}
 	
 }

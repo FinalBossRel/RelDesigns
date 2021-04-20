@@ -1,6 +1,7 @@
 package es.rel.dad.web.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -12,9 +13,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import es.rel.dad.web.entity.Author;
 import es.rel.dad.web.entity.Client;
+import es.rel.dad.web.entity.Email;
 import es.rel.dad.web.entity.Item;
 import es.rel.dad.web.entity.Orders;
 import es.rel.dad.web.repository.AuthorRepository;
@@ -84,20 +95,28 @@ public class ControllerShoppingCart {
 				System.out.println("Name : "+xx.getName());
 			}
 			
-			List aux = new ArrayList<Item>(c.get().getItems());
+			List<Item> aux = new ArrayList<Item>(c.get().getItems());
 			Orders orden1 = new Orders(aux);	
 			orders.save(orden1);
 			
 			c.get().setCarrito(new ArrayList<String>());
 			c.get().setItems(new ArrayList<Item>());
-			
 			c.get().getOrders().add(orden1);
 			
-			client.save(c.get());
+			String nombres = new String();
+			for(Item items: aux) {
+				nombres = nombres +" " + items.getName();
+			}
+			System.out.println(nombres);
+			/*
+			RestTemplate restTemplate = new RestTemplate();	
+			HttpEntity<Email> http = new HttpEntity<>(new Email(nombres,c.get().getMail()));	
+			ResponseEntity<String> result = restTemplate.postForEntity(new String("http://localhost:8080/enviarCorreo"), http, String.class);
+			*/
 
 		}
 		model.addAttribute("user", request.isUserInRole("USER"));
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		return "shoppingCart";
 	}
 	
