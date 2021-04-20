@@ -53,7 +53,7 @@ public class ControllerShoppingCart {
 		}
 
 		model.addAttribute("items", aux);		
-		model.addAttribute("client",c);
+		model.addAttribute("client",c.get());
 		model.addAttribute("author",cate);
 		return "authorItems";
 	}

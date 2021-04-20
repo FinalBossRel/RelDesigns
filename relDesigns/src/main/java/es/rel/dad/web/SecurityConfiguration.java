@@ -51,14 +51,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-				http.authorizeRequests().antMatchers("/**/*.jpg", "/*.css").permitAll();
 		
 				// Public pages
 				http.authorizeRequests().antMatchers("/").permitAll();
+				http.authorizeRequests().antMatchers("/home").permitAll();
 				http.authorizeRequests().antMatchers("/contact").permitAll();
 				http.authorizeRequests().antMatchers("/artGallery").permitAll();
 				http.authorizeRequests().antMatchers("/singin.html").permitAll();
 				http.authorizeRequests().antMatchers("/createaccount.html").permitAll();
+				http.authorizeRequests().antMatchers("/shoppingCart").permitAll();
+				http.authorizeRequests().antMatchers("/author/{{nameAuthor}}").permitAll();
+				
 				http.authorizeRequests().antMatchers("/authorItems").permitAll();
 				http.authorizeRequests().antMatchers("/**/*.jpg", "/*.css").permitAll();
 
@@ -67,8 +70,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				http.authorizeRequests().antMatchers("/logout").permitAll();
 
 				// Private pages (all other pages)
-				http.authorizeRequests().antMatchers("/shoppingCart").hasAnyRole("USER");
-				http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
 
 				http.authorizeRequests().anyRequest().authenticated();
 
@@ -76,8 +77,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				http.formLogin().loginPage("/login");
 				http.formLogin().usernameParameter("username");
 				http.formLogin().passwordParameter("password");
-				http.formLogin().defaultSuccessUrl("/home");
-
+				http.formLogin().defaultSuccessUrl("/home2");
 				http.formLogin().failureUrl("/loginerror");
 
 				// Logout

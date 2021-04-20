@@ -36,8 +36,8 @@ public class ControllerSingIn {
 	  public String login(Model model, @RequestParam String name, @RequestParam String password,  HttpServletRequest request) { 
 		  Client c = client.findByNameAndPassword(name,password); 
 		  if(c !=null) {
-		  model.addAttribute("fallo", false);
-		  model.addAttribute("id",c.getId()); model.addAttribute("client", c); } 
+			  model.addAttribute("fallo", false);
+			  model.addAttribute("id",c.getId()); model.addAttribute("client", c); } 
 		  return "home"; 
 	  }
 	 

@@ -108,6 +108,14 @@ public class ControllerHome {
 	public String home() {
 		return "home";
 	}
+	@GetMapping("/home2")
+	public String home2(Model model, HttpServletRequest request) {
+		model.addAttribute("user", request.isUserInRole("USER"));
+		Optional<Client> c = client.findByName(request.getUserPrincipal().getName());
+
+		model.addAttribute("client",c.get());
+		return "home";
+	}
 	@GetMapping("/logout")
 	public String logout(Model model) {
 	return "logout";
