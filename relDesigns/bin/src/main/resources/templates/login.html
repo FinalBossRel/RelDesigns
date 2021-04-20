@@ -26,22 +26,30 @@
             <div id="cabecera" ></div>
  
             <div id="cuerpo">
-                <form id="form-login" action="/loginBBDD" method="post" autocomplete="off">
+       
+                <form id="form-login" action="/login" method="post" autocomplete="off">
                     <p><label >Usuario:</label></p>
-                        <input name="name" type="text" id="name" placeholder="User" autofocus="" required=""></p>
+                        <input name="username" type="text" id="name" placeholder="User" autofocus="" required=""></p>
  
                     <p><label>Contraseña:</label></p>
-                        <input name="password" type="password" id="password" placeholder="Password" required=""></p>
+                        <input name="password" type="password" id="pass" placeholder="Password" required=""></p>
  
                     <p id="bot"><input type="submit" id="submit" name="submit" value="Sign in" class="boton"></p>
-   
+   					<input type="hidden" name="_csrf" value="{{token}}"/>
                 </form>
+                         
             </div>
  
             <div id="pie">Not your computer? Use Guest mode to sign in privately.</div>
         </div>
 
     </div>
+    
+    
+    {{#error}}
+		<h4 class="fw-light">Usuario o contrasenya incorrectos. Intentelo de nuevo.</h4>
+	{{/error}}
+		
 </body>
  
 </html>
