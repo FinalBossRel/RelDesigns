@@ -70,33 +70,21 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
        sudo apt-get install mysql-server
        Para seguir debemos realizar una actualización de nuestros paquetes,  por lo que debemos de abrir una terminal y en
        ella vamos a ejecutar los siguientes comandos
-  
        sudo apt update
        sudo apt upgrade
-       
  #### Hecho esto ahora es necesario que instalemos algunos paquetes necesarios para la instalación de Docker, usando el
  #### comando siguiente:
-       
-          sudo apt-get install apt-transport-https ca-certificates curl gnupg software-properties-common
-       
- #### Despues vamos a añadir la clave gpg al sistema, para ello debemos descargarla:
-       
+          sudo apt-get install apt-transport-https ca-certificates curl gnupg software-properties-common 
+ #### Despues vamos a añadir la clave gpg al sistema, para ello debemos descargarla:  
           curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
-       
- #### Añadimos el repositorio al sistema:
-       
+ #### Añadimos el repositorio al sistema: 
           sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu cosmic nightly "
-          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-          
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"    
  #### Y finalmente podemos instalar la aplicación con:
- 
-          sudo apt install docker-ce
-          
+          sudo apt install docker-ce 
  ####  ¿Cómo utilizar Docker?
-  
         sudo systemctl enable docker
         sudo systemctl start docker
-        
  ####  Para saber si docker esta funcionando, ejecutar el siguiente comando:
         sudo systemctl status docker    
  ####  Tambien podemos ver la versión del Docker que tenemos.
