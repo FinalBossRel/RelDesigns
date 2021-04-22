@@ -72,15 +72,15 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
        ella vamos a ejecutar los siguientes comandos
        sudo apt update
        sudo apt upgrade
- #### Hecho esto ahora es necesario que instalemos algunos paquetes necesarios para la instalación de Docker, usando el
+ #### 4 - Hecho esto ahora es necesario que instalemos algunos paquetes necesarios para la instalación de Docker, usando el
  #### comando siguiente:
           sudo apt-get install apt-transport-https ca-certificates curl gnupg software-properties-common 
- #### Despues vamos a añadir la clave gpg al sistema, para ello debemos descargarla:  
+ #### 5 - Despues vamos a añadir la clave gpg al sistema, para ello debemos descargarla:  
           curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
- #### Añadimos el repositorio al sistema: 
+ #### 6 - Añadimos el repositorio al sistema: 
           sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu cosmic nightly "
           sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"    
- #### Y finalmente podemos instalar la aplicación con:
+ #### 7 - Y finalmente podemos instalar la aplicación con:
           sudo apt install docker-ce 
  ####  ¿Cómo utilizar Docker?
         sudo systemctl enable docker
@@ -89,8 +89,8 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
         sudo systemctl status docker    
  ####  Tambien podemos ver la versión del Docker que tenemos.
         docker -v
- ####  Ejecutamos el docker mediante el comando:
+ #### 8 - Ejecutamos el docker mediante el comando:
         docker run --rm -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=relDesigns -p 3306:3306 -d mysql:8.0.22
- ####  Por último ejecutamos los jars descargados usando los comandos:
+ #### 9 - Por último ejecutamos los jars descargados usando los comandos:
         java -jar 
         java -jar
