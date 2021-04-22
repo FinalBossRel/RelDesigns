@@ -70,7 +70,8 @@ public class ControllerShoppingCart {
 	}
 	
 	@GetMapping("/shoppingCart")
-	public String shoppingCart(Model model) {
+	public String shoppingCart(Model model, HttpServletRequest request) {
+		model.addAttribute("user", request.isUserInRole("USER"));
 		return "shoppingCart";
 	}
 	
