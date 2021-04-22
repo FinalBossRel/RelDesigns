@@ -74,10 +74,32 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
        sudo apt update
        sudo apt upgrade
        
-       Hecho esto ahora es necesario que instalemos algunos paquetes necesarios para la instalación de Docker, usando el comando siguiente:
+       Hecho esto ahora es necesario que instalemos algunos paquetes necesarios para la instalación de Docker, usando el
+       comando siguiente:
        
-       sudo apt-get install apt-transport-https ca-certificates curl gnupg software-properties-common
+          sudo apt-get install apt-transport-https ca-certificates curl gnupg software-properties-common
        
        Despues vamos a añadir la clave gpg al sistema, para ello debemos descargarla:
        
-       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+       
+       Añadimos el repositorio al sistema:
+       
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu cosmic nightly "
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+          
+       Y finalmente podemos instalar la aplicación con:
+          sudo apt install docker-ce
+          
+  ####  ¿Cómo utilizar Docker?
+  
+        sudo systemctl enable docker
+        sudo systemctl start docker
+        
+  ####  Para saber si docker esta funcionando, ejecutar el siguiente comando:
+  
+        sudo systemctl status docker
+        
+  ####  Tambien podemos ver la versión del Docker que tenemos.
+  
+        docker -v
