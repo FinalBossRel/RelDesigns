@@ -70,9 +70,9 @@ public class ControllerShoppingCart {
 	}
 	
 	@GetMapping("/shoppingCart")
-	public String shoppingCart(Model model, HttpServletRequest request) {
-		model.addAttribute("user", request.isUserInRole("USER"));
-		return "shoppingCart";
+	public String shoppingCart(Model model) {
+	
+		return "shoppingcart";
 	}
 	
 	@GetMapping("/shoppingCart/{name}")
@@ -82,7 +82,7 @@ public class ControllerShoppingCart {
 
 		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c.get());
-		return "shoppingCart";
+		return "shoppingcart";
 	}
 
 	@GetMapping("/pay/{name}")
@@ -122,7 +122,7 @@ public class ControllerShoppingCart {
 
 		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c.get());
-		return "shoppingCart";
+		return "shoppingcart";
 	}
 	
 	@GetMapping("/delete/{name}/{food}")
@@ -144,7 +144,7 @@ public class ControllerShoppingCart {
 		client.save(c.get());
 		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c.get());
-		return "shoppingCart";
+		return "shoppingcart";
 	}
 	
 	

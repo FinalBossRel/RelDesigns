@@ -60,11 +60,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				http.authorizeRequests().antMatchers("/artGallery").permitAll();
 				http.authorizeRequests().antMatchers("/singin.html").permitAll();
 				http.authorizeRequests().antMatchers("/createaccount.html").permitAll();
-				http.authorizeRequests().antMatchers("/shoppingcart").permitAll();
 				http.authorizeRequests().antMatchers("/shoppingCart").permitAll();
 				http.authorizeRequests().antMatchers("/shoppingCart/{name}").permitAll();
 				http.authorizeRequests().antMatchers("/author/{{nameAuthor}}").permitAll();
-
 				
 				http.authorizeRequests().antMatchers("/authorItems").permitAll();
 				http.authorizeRequests().antMatchers("/**/*.jpg", "/*.css").permitAll();
