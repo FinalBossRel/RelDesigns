@@ -25,7 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import es.rel.dad.web.entity.Author;
 import es.rel.dad.web.entity.Client;
-import es.rel.dad.web.entity.Email;
+import es.rel.dad.web.entity.EmailBody;
 import es.rel.dad.web.entity.Item;
 import es.rel.dad.web.entity.Orders;
 import es.rel.dad.web.repository.AuthorRepository;
@@ -102,19 +102,23 @@ public class ControllerShoppingCart {
 			c.get().setCarrito(new ArrayList<String>());
 			c.get().setItems(new ArrayList<Item>());
 			c.get().getOrders().add(orden1);
+			client.save(c.get());
+	
 			
-			String nombres = new String();
-			for(Item items: aux) {
-				nombres = nombres +" " + items.getName();
+			String pedido = new String("Este correo se ha generado de forma automatica, no conteste: \n\n");
+			List <Orders> ordenes = c.get().getOrders();
+			for(Orders ordenesAux : ordenes) {
+				for(Item items : ordenesAux.getItems()){
+					pedido = pedido + items.getName()+ "\n";
+				}
 			}
-			System.out.println(nombres);
-			/*
-			RestTemplate restTemplate = new RestTemplate();	
-			HttpEntity<Email> http = new HttpEntity<>(new Email(nombres,c.get().getMail()));	
-			ResponseEntity<String> result = restTemplate.postForEntity(new String("http://localhost:8080/enviarCorreo"), http, String.class);
-			*/
-
+			pedido = pedido + "\nUn saludo de parte del equipo de RelDesigns";
+			
+			RestTemplate restTemplate = new RestTemplate();
+			HttpEntity<EmailBody> mailBody = new HttpEntity<>(new EmailBody(c.get().getMail(),pedido,"Factura Generada"));	
+			ResponseEntity<String> enviar = restTemplate.postForEntity("http://localhost:8011/email/send", mailBody, String.class);
 		}
+
 		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("client",c.get());
 		return "shoppingCart";

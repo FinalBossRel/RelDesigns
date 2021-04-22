@@ -53,7 +53,7 @@ public class ControllerHome {
 		List<Item> Things3 = new ArrayList<Item>();
 		Things3.add(item5);
 
-		Client C1 = new Client("Rel","Flores Angulo",625983775,"jcarlosfa.rel@gmail.com","C/Las Flores",passwordEncoder.encode("1234"), "USER");
+		Client C1 = new Client("Rel","Flores Angulo",625983775,"jc.mortem@gmail.com","C/Las Flores",passwordEncoder.encode("1234"), "USER");
 		Client C2 = new Client("Alberto","Del Pozo",123456789,"usuario@gmail.com","C/Calle Del Mar",passwordEncoder.encode("1111"), "USER");
 		
 		Author cx1 = new Author("Rafael",Things); 

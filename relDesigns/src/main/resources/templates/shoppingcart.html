@@ -47,7 +47,7 @@
                     		<dd>{{.}}   <a href="/delete/{{name}}/{{.}}" class="boton2">  Delete </a></dd>
                     		</dl>
                     	{{/client.carrito}}
-                    	<p class="boton"><a href="/pay/{{name}}">Pay</a></p>
+                    	<p class="boton"><a href="/pay/{{name}}" onclick="myFunction()">Pay</a></p>
                     {{/client}}
                     
                     
@@ -59,7 +59,13 @@
  
             <div id="pie"></div>
         </div>
- 
+
+		<script>
+			function myFunction() {
+			  alert("Se ha enviado su pedido a su correo correctamente!");
+			}
+		</script>
+        
     </div>
     
 	<script src="webjars/jquery/3.0.0/jquery.js"></script>
