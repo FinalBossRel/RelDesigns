@@ -6,6 +6,7 @@
 ## [5 - Autor](#Autor)
 ## [6 - Capturas De Pantalla](#Capturas)
 ## [7 - Diagramas](#Diagramas)
+## [8 - Despliegue de la aplicacion](#Despliegue)
 
 ## 1 - :computer: Descripción general <a name="Descripcion">
 Se desarrollará una aplicación web destinada a la venta de cuadros en una galería de arte, los usuarios podrán navegar por las diferentes categorías de la galería sin necesidad de registrarse. Para formalizar el pedido deberán iniciar sesión y completar su compra.
@@ -60,6 +61,10 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
 ## 7.3 Diagrama E/R
   ![ER](https://user-images.githubusercontent.com/63256402/111155357-a2ec9600-8594-11eb-80ba-5b55af13e005.jpeg)
   Diagrama en el que se muestra la realación estre las entidades de la pagina web.
-
-
-
+  
+## 8 - :computer: Despliegue de la aplicacion <a name="Despliegue">
+  1 - Tenemos que crear una máquina virtual usando Virtual Box, instalaremos el sistema operativo Ububtu en él.
+  2 - Tendremos que instalar java en este nuevo sistema operativo, para ello podemos usar el siguiente comando.
+      $ sudo apt install openjdk-11-jdk
+  3 - También tendremos que instalar MySql
+      $ sudo apt-get install mysql-server
