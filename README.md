@@ -92,5 +92,5 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
  #### 8 - Ejecutamos el docker mediante el comando:
         docker run --rm -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=relDesigns -p 3306:3306 -d mysql:8.0.22
  #### 9 - Por último ejecutamos los jars descargados usando los comandos:
-        java -jar 
-        java -jar
+        java -jar ServicioInternoDesigns.jar
+        java -jar relDesigns.jar
