@@ -68,3 +68,16 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
        sudo apt install openjdk-11-jdk
 #### 3 - También tendremos que instalar MySql
        sudo apt-get install mysql-server
+       Para seguir debemos realizar una actualización de nuestros paquetes,  por lo que debemos de abrir una terminal y en
+       ella vamos a ejecutar los siguientes comandos
+  
+       sudo apt update
+       sudo apt upgrade
+       
+       Hecho esto ahora es necesario que instalemos algunos paquetes necesarios para la instalación de Docker, usando el comando siguiente:
+       
+       sudo apt-get install apt-transport-https ca-certificates curl gnupg software-properties-common
+       
+       Despues vamos a añadir la clave gpg al sistema, para ello debemos descargarla:
+       
+       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
