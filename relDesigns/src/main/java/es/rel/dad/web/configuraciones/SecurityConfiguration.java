@@ -1,4 +1,4 @@
-package es.rel.dad.web;
+package es.rel.dad.web.configuraciones;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.security.SecureRandom;
 import javax.servlet.http.HttpServletResponse;
 
@@ -59,15 +60,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				http.authorizeRequests().antMatchers("/artGallery").permitAll();
 				http.authorizeRequests().antMatchers("/singin.html").permitAll();
 				http.authorizeRequests().antMatchers("/createaccount.html").permitAll();
+				http.authorizeRequests().antMatchers("/shoppingcart").permitAll();
 				http.authorizeRequests().antMatchers("/shoppingCart").permitAll();
+				http.authorizeRequests().antMatchers("/shoppingCart/{name}").permitAll();
 				http.authorizeRequests().antMatchers("/author/{{nameAuthor}}").permitAll();
+				http.authorizeRequests().antMatchers("/error").permitAll();
 				
 				http.authorizeRequests().antMatchers("/authorItems").permitAll();
 				http.authorizeRequests().antMatchers("/**/*.jpg", "/*.css").permitAll();
 
 				http.authorizeRequests().antMatchers("/login").permitAll();
 				http.authorizeRequests().antMatchers("/loginerror").permitAll();
-				http.authorizeRequests().antMatchers("/logout").permitAll();
 
 				// Private pages (all other pages)
 

@@ -1,4 +1,4 @@
-package es.rel.dad.web;
+package es.rel.dad.web.configuraciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

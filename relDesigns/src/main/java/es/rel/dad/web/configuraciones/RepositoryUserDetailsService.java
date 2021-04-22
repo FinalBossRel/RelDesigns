@@ -1,4 +1,4 @@
-package es.rel.dad.web;
+package es.rel.dad.web.configuraciones;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

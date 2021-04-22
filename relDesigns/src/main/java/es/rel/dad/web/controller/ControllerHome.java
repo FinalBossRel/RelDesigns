@@ -3,17 +3,22 @@ package es.rel.dad.web.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpServletResponse;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import es.rel.dad.web.entity.Author;
 import es.rel.dad.web.entity.Client;
@@ -100,14 +105,17 @@ public class ControllerHome {
 	
 	}
 	@GetMapping("/loginerror")
-	public String loginerror(Model model) {
+	public String loginerror(Model model,  HttpServletRequest request) {
+		model.addAttribute("user", request.isUserInRole("USER"));
 		model.addAttribute("error", true);
-	return "loginerror";
+	return "login";
 	}
+	
 	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
+	
 	@GetMapping("/home2")
 	public String home2(Model model, HttpServletRequest request) {
 		model.addAttribute("user", request.isUserInRole("USER"));
@@ -117,7 +125,17 @@ public class ControllerHome {
 		return "home";
 	}
 	@GetMapping("/logout")
-	public String logout(Model model) {
-	return "logout";
+	public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null){    
+		        new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+	    return "home";
+	}
+	
+	@GetMapping("/error")
+	public String error(Model model) {
+		model.addAttribute("error", true);
+	return "login";
 	}
 }
