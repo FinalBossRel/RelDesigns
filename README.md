@@ -63,8 +63,8 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
   Diagrama en el que se muestra la realación estre las entidades de la pagina web.
   
 ## 8 - :computer: Despliegue de la aplicacion <a name="Despliegue">
-  1 - Tenemos que crear una máquina virtual usando Virtual Box, instalaremos el sistema operativo Ububtu en él.
-  2 - Tendremos que instalar java en este nuevo sistema operativo, para ello podemos usar el siguiente comando.
-       sudo apt install openjdk-11-jdk
-  3 - También tendremos que instalar MySql
-       sudo apt-get install mysql-server
+####1 - Tenemos que crear una máquina virtual usando Virtual Box, instalaremos el sistema operativo Ububtu en él.
+####2 - Tendremos que instalar java en este nuevo sistema operativo, para ello podemos usar el siguiente comando.
+    $   sudo apt install openjdk-11-jdk
+####3 - También tendremos que instalar MySql
+    $   sudo apt-get install mysql-server
