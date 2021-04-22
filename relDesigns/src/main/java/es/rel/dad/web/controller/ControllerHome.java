@@ -133,9 +133,4 @@ public class ControllerHome {
 	    return "home";
 	}
 	
-	@GetMapping("/error")
-	public String error(Model model) {
-		model.addAttribute("error", true);
-	return "login";
-	}
 }

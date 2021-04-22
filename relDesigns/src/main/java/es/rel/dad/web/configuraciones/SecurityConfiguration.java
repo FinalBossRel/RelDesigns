@@ -64,7 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				http.authorizeRequests().antMatchers("/shoppingCart").permitAll();
 				http.authorizeRequests().antMatchers("/shoppingCart/{name}").permitAll();
 				http.authorizeRequests().antMatchers("/author/{{nameAuthor}}").permitAll();
-				http.authorizeRequests().antMatchers("/error").permitAll();
+
 				
 				http.authorizeRequests().antMatchers("/authorItems").permitAll();
 				http.authorizeRequests().antMatchers("/**/*.jpg", "/*.css").permitAll();
