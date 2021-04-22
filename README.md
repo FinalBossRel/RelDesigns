@@ -98,9 +98,11 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
         sudo systemctl start docker
         
  ####  Para saber si docker esta funcionando, ejecutar el siguiente comando:
-  
-        sudo systemctl status docker
-        
+        sudo systemctl status docker    
  ####  Tambien podemos ver la versión del Docker que tenemos.
-  
         docker -v
+ ####  Ejecutamos el docker mediante el comando:
+        docker run --rm -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=relDesigns -p 3306:3306 -d mysql:8.0.22
+ ####  Por último ejecutamos los jars descargados usando los comandos:
+        java -jar 
+        java -jar
