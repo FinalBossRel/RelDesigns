@@ -65,6 +65,6 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
 ## 8 - :computer: Despliegue de la aplicacion <a name="Despliegue">
   1 - Tenemos que crear una máquina virtual usando Virtual Box, instalaremos el sistema operativo Ububtu en él.
   2 - Tendremos que instalar java en este nuevo sistema operativo, para ello podemos usar el siguiente comando.
-      $ sudo apt install openjdk-11-jdk
+       sudo apt install openjdk-11-jdk
   3 - También tendremos que instalar MySql
-      $ sudo apt-get install mysql-server
+       sudo apt-get install mysql-server
