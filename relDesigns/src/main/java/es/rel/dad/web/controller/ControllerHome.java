@@ -6,9 +6,13 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +89,7 @@ public class ControllerHome {
 		Optional<Client> c = client.findByName(name);
 		if(c != null)
 			model.addAttribute("client", c);
-		model.addAttribute("client",c);
+		
 		return "home";
 	}
 	
@@ -102,12 +106,14 @@ public class ControllerHome {
 	@GetMapping("/loginerror")
 	public String loginerror(Model model) {
 		model.addAttribute("error", true);
-	return "loginerror";
+	return "login";
 	}
 	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
+	
+	
 	@GetMapping("/home2")
 	public String home2(Model model, HttpServletRequest request) {
 		model.addAttribute("user", request.isUserInRole("USER"));
@@ -116,8 +122,15 @@ public class ControllerHome {
 		model.addAttribute("client",c.get());
 		return "home";
 	}
+
 	@GetMapping("/logout")
-	public String logout(Model model) {
-	return "logout";
+	public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null){    
+		        new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+	
+		return "home";
 	}
 }
