@@ -1,12 +1,14 @@
 package es.rel.dad.web.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Item {
+public class Item implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +55,20 @@ public class Item {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	@Override
+	public int hashCode() {
+		int hash = 1;
+        hash = hash * 17 + (int)this.id;
+        hash = hash * 31 + nameItem.hashCode();
+        return hash;
+		
+	}
+		
+	@Override
+	public String toString() {
+		return "Items [id=" + id + ", nombre=" + nameItem + ", price=" + price + "]";
 	}
 	
 	

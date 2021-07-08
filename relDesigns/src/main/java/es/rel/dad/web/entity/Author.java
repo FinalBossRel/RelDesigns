@@ -1,5 +1,6 @@
 package es.rel.dad.web.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Author{
+public class Author implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,6 +51,11 @@ public class Author{
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "Proveedor [id=" + id + ", nombre=" + nameAuthor+ "]";
 	}
 
 }

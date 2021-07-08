@@ -1,5 +1,6 @@
 package es.rel.dad.web.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Client {
+public class Client implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -157,7 +158,7 @@ public class Client {
 	}
 	
 
-	/*
+	
 	@Override
 	public int hashCode() {
 		int hash = 1;
@@ -166,7 +167,10 @@ public class Client {
         return hash;
 		
 	}
-		*/
-	
+		
+	@Override
+	public String toString() {
+		return "Proveedor [id=" + id + ", nombre=" + name + ", surmane=" + surname + "]";
+	}
 	
 }

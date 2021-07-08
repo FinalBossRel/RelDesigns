@@ -1,5 +1,6 @@
 package es.rel.dad.web.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Orders {
+public class Orders implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

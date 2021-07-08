@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import org.springframework.http.HttpEntity;
@@ -116,8 +117,18 @@ public class ControllerShoppingCart {
 			pedido = pedido + "\nUn saludo de parte del equipo de RelDesigns";
 			
 			RestTemplate restTemplate = new RestTemplate();
+			String url="http://haproxyR:8090/email/send";
+			
 			HttpEntity<EmailBody> mailBody = new HttpEntity<>(new EmailBody(c.get().getMail(),pedido,"Factura Generada"));	
-			ResponseEntity<String> enviar = restTemplate.postForEntity("http://localhost:8011/email/send", mailBody, String.class);
+			
+			
+			//ResponseEntity<String> enviar = restTemplate.postForEntity("http://haproxyR:8011/email/send", mailBody, String.class);
+		
+			try{
+				
+		        restTemplate.postForEntity(url, mailBody, String.class);
+		    
+			}catch(HttpStatusCodeException e){}
 		}
 
 		model.addAttribute("user", request.isUserInRole("USER"));
