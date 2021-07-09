@@ -7,6 +7,8 @@
 ## [6 - Capturas De Pantalla](#Capturas)
 ## [7 - Diagramas](#Diagramas)
 ## [8 - Despliegue de la aplicacion](#Despliegue)
+## [9 - Diagrama de la aplicación dockerizada + balanceador](#Diagrama2)
+## [10 - Despliegue de la aplicacion, balanceada y dockerizada](#docker)
 
 ## 1 - :computer: Descripción general <a name="Descripcion">
 Se desarrollará una aplicación web destinada a la venta de cuadros en una galería de arte, los usuarios podrán navegar por las diferentes categorías de la galería sin necesidad de registrarse. Para formalizar el pedido deberán iniciar sesión y completar su compra.
@@ -94,3 +96,25 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
  #### 9 - Por último ejecutamos los jars descargados usando los comandos:
         java -jar ServicioInternoDesigns.jar
         java -jar relDesigns.jar
+  
+## 9 - :computer: Diagrama de la aplicación dockerizada + balanceador <a name="Diagrama2">
+  
+  ![Diagrama en blanco](https://user-images.githubusercontent.com/63256402/124998943-8990bd80-e04d-11eb-8d31-9ca0045e0069.jpg)
+  
+## 10 - :computer: Despliegue de la aplicacion, balanceada y dockerizada <a name="docker">
+  1- Se crean los ficheros .jar
+  
+  2- Se usará docker compose
+  
+  3- Se crean los ficheros dickerfile para dockerizar cada aplicación
+  
+  4- Se crea el fichero docker-compose.yml
+  
+  5- Se crean los balanceadores para la aplicación web y el servicio interno
+  
+  6- Se indican las caracteristicas en el fichero del balanceador, el frontend y backend
+  
+![Screenshot 2021-07-09 015655](https://user-images.githubusercontent.com/63256402/125004348-9fa47b00-e059-11eb-99c1-7614634160ca.png)
+  
+  ![Screenshot 2021-07-09 015721](https://user-images.githubusercontent.com/63256402/125004352-a206d500-e059-11eb-8b75-2f476dc04d98.png)
+
