@@ -25,7 +25,6 @@
             <div id="cuerpo">
  
                 <form id="form-login" action="/newUser" method="post" >
-                
                     <p><label for="nombre">First Name:</label></p>
                         <input name="name" type="text" id="nombre" class="nombre" autofocus="" /></p>
  
@@ -42,11 +41,10 @@
                         <input name="address" type="name" id="address" class="correo" /></p>
  
                     <p><label for="password">Password:</label></p>
-                    <input name="password" type="password" id="password" class="pass"  /></p>
+                        <input name="password" type="password" id="password" class="pass"  /></p>
 
                     <p id="bot"><input name="submit" type="submit" id="boton" value="Registrar" class="boton"/></p>
-                	 <input type="hidden" name="_csrf" value="{{token}}"/>
-                	
+                	<input type="hidden" name="_csrf" value="{{token}}">
                 </form>
             </div>
  
@@ -54,9 +52,9 @@
         </div>
  
     </div>
-    
-    <script src="webjars/jquery/3.0.0/jquery.js"></script>
+   	<script src="webjars/jquery/3.0.0/jquery.js"></script>
 	<script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
 </body>
  
 </html>
