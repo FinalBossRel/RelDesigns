@@ -114,4 +114,7 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
   
   6- Se indican las caracteristicas en el fichero del balanceador, el frontend y backend
   
+![Screenshot 2021-07-09 015655](https://user-images.githubusercontent.com/63256402/125004348-9fa47b00-e059-11eb-99c1-7614634160ca.png)
   
+  ![Screenshot 2021-07-09 015721](https://user-images.githubusercontent.com/63256402/125004352-a206d500-e059-11eb-8b75-2f476dc04d98.png)
+
