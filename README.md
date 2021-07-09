@@ -103,10 +103,15 @@ Página que permite acceder al usuario con sus credecianles a su cuenta personal
   
 ## 10 - :computer: Despliegue de la aplicacion, balanceada y dockerizada <a name="docker">
   1- Se crean los ficheros .jar
+  
   2- Se usará docker compose
+  
   3- Se crean los ficheros dickerfile para dockerizar cada aplicación
+  
   4- Se crea el fichero docker-compose.yml
+  
   5- Se crean los balanceadores para la aplicación web y el servicio interno
+  
   6- Se indican las caracteristicas en el fichero del balanceador, el frontend y backend
   
   
